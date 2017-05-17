@@ -1,0 +1,46 @@
+{
+  "name": "@samiwse-tech/di",
+  "version": "0.0.0",
+  "description": "A Simple DI library",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "rm -rf ./lib && node_modules/.bin/tsc --project tsconfig.publish.json",
+    "lint": "node_modules/.bin/tslint --project tsconfig.tslint.json --type-check --format verbose './src/**/*.{ts,tsx}'",
+    "mocha": "node_modules/.bin/mocha --opts ./mocha.opts './src/**/*.spec.ts'",
+    "test": "yarn outdated && yarn mocha && yarn lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samwise-tech/di.git"
+  },
+  "keywords": [
+    "di",
+    "ts",
+    "typescript",
+    "dependency injection"
+  ],
+  "author": "Samwise Technology, Inc. <icunningham@samwise.tech>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samwise-tech/di/issues"
+  },
+  "homepage": "https://github.com/samwise-tech/di#readme",
+  "engines": {
+    "node": ">=6"
+  },
+  "devDependencies": {
+    "@samwise-tech/tslint-config": "0.1.1",
+    "@types/chai": "3.5.2",
+    "@types/mocha": "2.2.41",
+    "chai": "3.5.0",
+    "mocha": "3.4.1",
+    "reflect-metadata": "^0.1.10",
+    "ts-node": "3.0.4",
+    "tslint": "5.2.0",
+    "typescript": "2.3.2"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.10"
+  }
+}
