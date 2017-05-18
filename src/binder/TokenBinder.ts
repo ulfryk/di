@@ -1,6 +1,5 @@
 import { FactoryFn, Injector, Label, Token, Type } from '../injector';
-
-import extractDependenciesMetadata from './extractDependenciesMetadata';
+import { extractDependenciesMetadata } from '../metadata';
 
 export default class TokenBinder<T> {
 

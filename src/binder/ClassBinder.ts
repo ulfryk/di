@@ -1,6 +1,5 @@
 import { Injector, Token, Type } from '../injector';
-
-import extractDependenciesMetadata from './extractDependenciesMetadata';
+import { extractDependenciesMetadata } from '../metadata';
 
 export default class ClassBinder<T> {
 
