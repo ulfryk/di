@@ -1,11 +1,5 @@
-import { CircularDependencyError } from './CircularDependencyError';
-import Definition from './Definition';
-import FactoryFn from './FactoryFn';
-import Injector from './Injector';
-import Label from './Label';
-import { RegistrationError } from './RegistrationError';
-import Token from './Token';
-import Type from './Type';
+import { CircularDependencyError, RegistrationError } from '../errors';
+import { Definition, FactoryFn, Injector, Label, Token, Type } from '../injector';
 
 export class TestInjector extends Injector {
 

@@ -1,8 +1,8 @@
-import { CircularDependencyError } from './CircularDependencyError';
+import { CircularDependencyError, RegistrationError } from '../errors';
+
 import Definition from './Definition';
 import FactoryFn from './FactoryFn';
 import Label from './Label';
-import { RegistrationError } from './RegistrationError';
 import Token from './Token';
 import Type from './Type';
 

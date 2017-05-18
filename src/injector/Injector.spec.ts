@@ -1,7 +1,9 @@
 /* tslint:disable:no-unused-expression max-classes-per-file */
 import { expect } from 'chai';
 
-import { injector } from './index';
+import getInjectorSingleton from './getInjectorSingleton';
+
+const injector = getInjectorSingleton();
 
 injector.registerFactory('a', () => 'a', 'b');
 injector.registerFactory('b', () => 'b', 'c');
