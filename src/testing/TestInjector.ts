@@ -1,7 +1,7 @@
 import { CircularDependencyError, RegistrationError } from '../errors';
 import { Definition, FactoryFn, Injector, Label, Token, Type } from '../injector';
 
-export class TestInjector extends Injector {
+export default class TestInjector extends Injector {
 
   constructor(
     protected name: string,

@@ -1,14 +1,12 @@
-/* tslint:disable:no-unused-expression max-classes-per-file */
+/* tslint:disable:no-unused-expression max-classes-per-file no-let */
 import { expect } from 'chai';
 
+import { cleanInjectorSingleton } from '../testing';
+
 import getInjectorSingleton from './getInjectorSingleton';
+import Injector from './Injector';
 
-const injector = getInjectorSingleton();
-
-injector.registerFactory('a', () => 'a', 'b');
-injector.registerFactory('b', () => 'b', 'c');
-injector.registerFactory('c', () => 'c', 'd');
-injector.registerFactory('d', () => 'd', 'a');
+let injector: Injector;
 
 class Mock {}
 
@@ -26,10 +24,19 @@ class MockB extends Mock {
   }
 }
 
-injector.registerClass(MockC);
-injector.registerBoundClass(Mock, MockA)(MockC);
-
 describe('Injector', () => {
+
+  beforeEach(() => {
+    injector = getInjectorSingleton();
+    injector.registerFactory('a', () => 'a', 'b');
+    injector.registerFactory('b', () => 'b', 'c');
+    injector.registerFactory('c', () => 'c', 'd');
+    injector.registerFactory('d', () => 'd', 'a');
+    injector.registerClass(MockC);
+    injector.registerBoundClass(Mock, MockA)(MockC);
+  });
+
+  afterEach(cleanInjectorSingleton);
 
   it('should throw on circular dependency', () => {
     expect(() => {

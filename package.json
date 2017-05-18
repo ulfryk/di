@@ -33,6 +33,7 @@
     "@samwise-tech/tslint-config": "0.1.1",
     "@types/chai": "3.5.2",
     "@types/mocha": "2.2.41",
+    "@types/node": "7.0.18",
     "chai": "3.5.0",
     "mocha": "3.4.1",
     "reflect-metadata": "^0.1.10",

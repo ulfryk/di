@@ -21,7 +21,7 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "target": "es5",
-    "types": ["chai", "mocha", "reflect-metadata"]
+    "types": ["chai", "mocha", "node", "reflect-metadata"]
   },
   "exclude": ["node_modules", "lib"]
 }
