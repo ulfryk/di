@@ -3,7 +3,8 @@ import { expect } from 'chai';
 
 import { cleanInjectorSingleton } from '../testing';
 
-import getInjectorSingleton, { GlobalObject, KEY } from './getInjectorSingleton';
+import getInjectorSingleton from './getInjectorSingleton';
+import { GlobalObject, KEY } from './getSingleton';
 import Injector from './Injector';
 
 describe('getInjectorSingleton', () => {

@@ -1,4 +1,4 @@
-import { GlobalObject, KEY } from '../injector/getInjectorSingleton';
+import { GlobalObject, KEY } from '../injector/getSingleton';
 
 const cleanInjectorSingleton = () => {
   GlobalObject[KEY] = undefined;
