@@ -30,6 +30,7 @@ const bind: IBinder = (<T>(
   }
   if (isDefinition(token)) {
     getInjector().register(token);
+    return;
   }
   throw new Error('Invalid value passed to "bind" function');
 }) as any as IBinder;

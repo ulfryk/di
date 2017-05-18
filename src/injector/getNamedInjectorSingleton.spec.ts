@@ -9,7 +9,7 @@ import Injector from './Injector';
 
 const name = 'lorem ipsum dolor';
 
-describe('getInjectorSingleton', () => {
+describe('getNamedInjectorSingleton', () => {
 
   afterEach(() => {
     cleanNamedInjectorSingleton(name);
