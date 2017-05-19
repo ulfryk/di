@@ -1,32 +1,45 @@
-/* tslint:disable:no-unused-expression max-classes-per-file */
+/* tslint:disable:no-unused-expression max-classes-per-file no-let */
 import { expect } from 'chai';
 import 'reflect-metadata';
 
 import { Injectable } from '../decorators';
-import { Definition, getInjector, Injector } from '../injector';
+import { Definition, getInjector, Injector, Type } from '../injector';
 import { GlobalObject, KEY } from '../injector/getSingleton';
 import { cleanInjectorSingleton } from '../testing';
 
 import bind from './bind';
 
-@Injectable()
-class A {}
-
-@Injectable()
-class B {}
-
-@Injectable()
-class C {
-  constructor(public a: A, public b: B) {}
-}
+let ClassA: Type;
+let ClassB: Type;
+let ClassC: Type<{ a: any; b: any }>;
 
 describe('bind', () => {
+
+  beforeEach(() => {
+
+    @Injectable()
+    class A {}
+
+    ClassA = A;
+
+    @Injectable()
+    class B {}
+
+    ClassB = B;
+
+    @Injectable()
+    class C {
+      constructor(public a: A, public b: B) {}
+    }
+
+    ClassC = C;
+  });
 
   afterEach(cleanInjectorSingleton);
 
   it('should create Injector instance when it does not exist (for a Type)', () => {
     expect(GlobalObject[KEY]).to.be.undefined;
-    bind(A).toSelf();
+    bind(ClassA).toSelf();
     expect(GlobalObject[KEY]).to.be.instanceof(Injector);
   });
 
@@ -46,13 +59,13 @@ describe('bind', () => {
   });
 
   it('should provide instance with resolved dependencies', () => {
-    bind(A).toSelf();
-    bind(B).toSelf();
-    bind(C).toSelf();
-    const c = getInjector().get(C);
-    expect(c).to.be.instanceof(C);
-    expect(c.a).to.be.instanceof(A);
-    expect(c.b).to.be.instanceof(B);
+    bind(ClassA).toSelf();
+    bind(ClassB).toSelf();
+    bind(ClassC).toSelf();
+    const c = getInjector().get(ClassC);
+    expect(c).to.be.instanceof(ClassC);
+    expect(c.a).to.be.instanceof(ClassA);
+    expect(c.b).to.be.instanceof(ClassB);
   });
 
 });
