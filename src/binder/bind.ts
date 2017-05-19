@@ -1,4 +1,4 @@
-import { Definition, getInjectorSingleton, Label, Token, Type } from '../injector';
+import { Definition, getInjector, Label, Token, Type } from '../injector';
 
 import ClassBinder from './ClassBinder';
 import TokenBinder from './TokenBinder';
@@ -20,13 +20,13 @@ const isDefinition = (token: Token | Definition): token is Definition =>
 
 const bind: IBinder = (<T>(
   token: Type<T> | Label | Definition<T>,
-  getInjector = getInjectorSingleton,
+  getInj = getInjector,
 ) => {
   if (isType(token)) {
-    return new ClassBinder<T>(token, getInjector);
+    return new ClassBinder<T>(token, getInj);
   }
   if (isLabel(token)) {
-    return new TokenBinder<T>(token, getInjector);
+    return new TokenBinder<T>(token, getInj);
   }
   if (isDefinition(token)) {
     getInjector().register(token);

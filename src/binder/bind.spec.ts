@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import 'reflect-metadata';
 
 import { Injectable } from '../decorators';
-import { Definition, getInjectorSingleton, Injector } from '../injector';
+import { Definition, getInjector, Injector } from '../injector';
 import { GlobalObject, KEY } from '../injector/getSingleton';
 import { cleanInjectorSingleton } from '../testing';
 
@@ -49,7 +49,7 @@ describe('bind', () => {
     bind(A).toSelf();
     bind(B).toSelf();
     bind(C).toSelf();
-    const c = getInjectorSingleton().get(C);
+    const c = getInjector().get(C);
     expect(c).to.be.instanceof(C);
     expect(c.a).to.be.instanceof(A);
     expect(c.b).to.be.instanceof(B);

@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import { cleanInjectorSingleton } from '../testing';
 
-import getInjectorSingleton from './getInjectorSingleton';
+import getInjector from './getInjector';
 import Injector from './Injector';
 
 let injector: Injector;
@@ -27,7 +27,7 @@ class MockB extends Mock {
 describe('Injector', () => {
 
   beforeEach(() => {
-    injector = getInjectorSingleton();
+    injector = getInjector();
     injector.registerFactory('a', () => 'a', 'b');
     injector.registerFactory('b', () => 'b', 'c');
     injector.registerFactory('c', () => 'c', 'd');

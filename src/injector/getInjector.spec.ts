@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import { cleanInjectorSingleton } from '../testing';
 
-import getInjectorSingleton from './getInjectorSingleton';
+import getInjector from './getInjector';
 import { GlobalObject, KEY } from './getSingleton';
 import Injector from './Injector';
 
@@ -13,7 +13,7 @@ describe('getInjectorSingleton', () => {
 
   it('should create Injector instance when it does not exist', () => {
     expect(GlobalObject[KEY]).to.be.undefined;
-    const injector = getInjectorSingleton();
+    const injector = getInjector();
     expect(GlobalObject[KEY]).to.be.instanceof(Injector);
     expect(GlobalObject[KEY]).to.equal(injector);
   });
