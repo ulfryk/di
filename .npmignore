@@ -1,0 +1,19 @@
+# top-level directories
+
+node_modules/
+src/
+
+# config files
+
+.npmignore
+.travis.yml
+mocha.opts
+tsconfig.json
+tsconfig.publish.json
+tsconfig.tslint.json
+tslint.json
+yarn.lock
+
+# ide configs
+
+.idea/
