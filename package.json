@@ -1,6 +1,6 @@
 {
   "name": "@samiwse-tech/di",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A Simple DI library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,6 +9,7 @@
     "karma": "node_modules/.bin/karma start config/karma.conf.js",
     "lint": "node_modules/.bin/tslint --project tsconfig.tslint.json --type-check --format verbose './src/**/*.{ts,tsx}'",
     "mocha": "node_modules/.bin/mocha --opts ./mocha.opts './src/**/*.spec.ts'",
+    "prepublish": "yarn test && yarn build",
     "test": "yarn outdated && yarn test-specs-for-only && yarn mocha && yarn karma && yarn lint",
     "test-specs-for-only": "node config/test-specs-for-only.js"
   },
