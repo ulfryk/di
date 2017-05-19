@@ -13,7 +13,9 @@ class Injector {
   constructor(
     public factories = new Map<Token, Definition>(),
     public instances = new Map<Token, any>(),
-  ) {}
+  ) {
+    this.register(new Definition([], () => this, Injector));
+  }
 
   public register(definition: Definition): void {
     if (this.factories.has(definition.token)) {
