@@ -20,7 +20,7 @@ export const getSingleton = (key: symbol): Injector => {
   if (GlobalObject[key] === undefined) {
     GlobalObject[key] = new Injector();
   }
-  if (GlobalObject[key] instanceof Injector) {
+  if (String(GlobalObject[key].constructor) === String(Injector)) {
     return GlobalObject[key];
   }
   throw new Error('Injector instance singleton was replaced with unknown object.');
