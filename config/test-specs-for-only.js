@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { Some } = require('monet');
+const { Identity, Some } = require('monet');
 
 const ROOT = 'src';
 const FILE_PATTERN = '.spec.';
@@ -32,6 +32,8 @@ const getWarningDescription = info =>
 
 const filterPaths = pattern => filePaths => filePaths.filter(path => path.includes(pattern));
 
+const toOutput = code => message => Identity({ message, code });
+
 Some(ROOT)
   .map(getFileNames)
   .map(flatten)
@@ -41,10 +43,8 @@ Some(ROOT)
   .filter(warnings => warnings.length > 0)
   .map(warnings => warnings.map(getWarningDescription).join('\n'))
   .toEither(SUCCESS_MESSAGE)
-  .cata(message => {
+  .cata(toOutput(0), toOutput(1))
+  .forEach(({ message, code }) => {
     console.log(message);
-    process.exit(0);
-  }, message => {
-    console.log(message);
-    process.exit(1);
+    process.exit(code);
   });

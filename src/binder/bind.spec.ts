@@ -11,7 +11,7 @@ import bind from './bind';
 
 let ClassA: Type;
 let ClassB: Type;
-let ClassC: Type<{ a: any; b: any }>;
+let ClassC: Type<{ readonly a: any; readonly b: any }>;
 
 describe('bind', () => {
 
@@ -29,7 +29,7 @@ describe('bind', () => {
 
     @Injectable()
     class C {
-      constructor(public a: A, public b: B) {}
+      constructor(public readonly a: A, public readonly b: B) {}
     }
 
     ClassC = C;
