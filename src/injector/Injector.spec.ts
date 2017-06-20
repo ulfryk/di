@@ -40,13 +40,13 @@ describe('Injector', () => {
 
   it('should throw on circular dependency', () => {
     expect(() => {
-      injector.get('a');
+      injector.get<string>('a');
     }).to.throw(/Circular dependency: "a" <- "b" <- "c" <- "d" <- "a"/);
   });
 
   it('should throw when there is no requested dependency', () => {
     expect(() => {
-      injector.get(Symbol('c'));
+      injector.get<string>(Symbol('c'));
     }).to.throw(
       /"Symbol\(c\)(?:_[\w\d.]+)?" not registered \( path: "Symbol\(c\)(?:_[\w\d.]+)?" \)/);
   });
