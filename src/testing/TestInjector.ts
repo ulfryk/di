@@ -22,7 +22,7 @@ export default class TestInjector extends Injector {
     });
   }
 
-  public registerBoundClass<T, C extends T>(token: Type<T>, Class: Type<C>) {
+  public registerBoundClass<T extends object, C extends T>(token: Token<T>, Class: Type<C>) {
     return (...dependencies: Token[]): void => {
       this.factories.set(token, {
         dependencies,

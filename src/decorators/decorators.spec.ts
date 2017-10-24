@@ -20,22 +20,22 @@ class B {}
 @Injectable()
 class C {
 
-  @InjectProp('lorem ipsum') public ll: string;
+  @InjectProp('lorem ipsum') public readonly ll: string;
 
   constructor(
-    public a: A,
-    public b: B,
+    public readonly a: A,
+    public readonly b: B,
   ) {}
 }
 
 @Injectable()
 class D {
 
-  @InjectProp() public a: A;
+  @InjectProp() public readonly a: A;
 
   constructor(
-    public c: C,
-    @Inject('lorem ipsum') public l: string,
+    public readonly c: C,
+    @Inject('lorem ipsum') public readonly l: string,
   ) {}
 }
 

@@ -8,7 +8,7 @@ import Type from './Type';
 
 class Injector {
 
-  protected name = 'Injector';
+  protected readonly name: string = 'Injector';
 
   constructor(
     public factories = new Map<Token, Definition>(),
@@ -35,7 +35,7 @@ class Injector {
     ));
   }
 
-  public registerBoundClass<T, C extends T>(token: Token<T>, Class: Type<C>) {
+  public registerBoundClass<T extends object, C extends T>(token: Token<T>, Class: Type<C>) {
     return (...dependencies: Token[]): void => {
       if (this.factories.has(token)) {
         throw RegistrationError.of(
