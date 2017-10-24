@@ -1,7 +1,7 @@
 import { Injector, Token, Type } from '../injector';
 import { extractDependenciesMetadata } from '../metadata';
 
-export default class ClassBinder<T> {
+export default class ClassBinder<T extends object> {
 
   private readonly dependencies: Token[];
 
