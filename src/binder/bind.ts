@@ -5,7 +5,7 @@ import TokenBinder from './TokenBinder';
 
 export interface IBinder {
   <T>(token: Label): TokenBinder<T>; // tslint:disable-line:readonly-interface
-  <T>(token: Type<T>): ClassBinder<T>; // tslint:disable-line:readonly-interface
+  <T extends object>(token: Type<T>): ClassBinder<T>; // tslint:disable-line:readonly-interface
   <T>(definition: Definition<T>): void; // tslint:disable-line:readonly-interface
 }
 
@@ -18,7 +18,7 @@ const isLabel = (token: Token | Definition): token is Label =>
 const isDefinition = (token: Token | Definition): token is Definition =>
   token instanceof Definition;
 
-const bind: IBinder = (<T>(
+const bind: IBinder = (<T extends object>(
   token: Type<T> | Label | Definition<T>,
   getInj = getInjector,
 ) => {
