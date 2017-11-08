@@ -1,6 +1,6 @@
 {
   "name": "@samwise-tech/di",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Simple DI library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,7 +11,7 @@
     "mocha": "node_modules/.bin/mocha --opts ./mocha.opts './src/**/*.spec.ts'",
     "prepublish": "yarn build",
     "test": "yarn outdated && yarn lint && yarn test-specs-for-only && yarn mocha && yarn karma",
-    "test-specs-for-only": "node config/test-specs-for-only.js"
+    "test-specs-for-only": "node_modules/.bin/forbidden 'src/**/*.spec.ts' -p describe.only it.only"
   },
   "repository": {
     "type": "git",
@@ -33,10 +33,11 @@
     "node": ">=6"
   },
   "devDependencies": {
+    "@samwise-tech/forbidden-patterns": "0.1.1",
     "@samwise-tech/tslint-config": "0.4.1",
     "@types/chai": "4.0.4",
-    "@types/mocha": "2.2.43",
-    "@types/node": "8.0.46",
+    "@types/mocha": "2.2.44",
+    "@types/node": "8.0.50",
     "chai": "4.1.2",
     "circular-dependency-plugin": "4.2.1",
     "core-js": "2.5.1",
@@ -49,10 +50,10 @@
     "mocha": "4.0.1",
     "monet": "0.9.0-alpha.4",
     "reflect-metadata": "^0.1.10",
-    "ts-loader": "3.0.5",
+    "ts-loader": "3.1.1",
     "ts-node": "3.3.0",
     "tslint": "5.8.0",
-    "typescript": "2.5.3",
+    "typescript": "2.6.1",
     "webpack": "3.8.1"
   },
   "peerDependencies": {
