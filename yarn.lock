@@ -2,18 +2,18 @@
 # yarn lockfile v1
 
 
-"@samwise-tech/forbidden-patterns@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@samwise-tech/forbidden-patterns/-/forbidden-patterns-0.1.1.tgz#3c80b232991d9728ab8abe40a4e68493f54e7394"
+"@samwise-tech/forbidden-patterns@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@samwise-tech/forbidden-patterns/-/forbidden-patterns-1.0.0.tgz#401e9b6aa2084eb5c504c13facab3e12781ed251"
   dependencies:
     chalk "2.3.0"
     glob "7.1.2"
     monet "0.9.0-alpha.4"
     yargs "10.0.3"
 
-"@samwise-tech/tslint-config@0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@samwise-tech/tslint-config/-/tslint-config-0.4.1.tgz#2e5b29c1bc93bf188b466ef76c7eadac06f6a100"
+"@samwise-tech/tslint-config@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@samwise-tech/tslint-config/-/tslint-config-1.0.0.tgz#aed4b306948de204701ceab5a4afc32a6726dbc1"
   dependencies:
     tslint-divid "1.0.4"
     tslint-eslint-rules "4.1.1"
