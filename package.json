@@ -33,7 +33,7 @@
     "node": ">=6"
   },
   "devDependencies": {
-    "@samwise-tech/forbidden-patterns": "1.0.0",
+    "@samwise-tech/forbidden-patterns": "1.0.1",
     "@samwise-tech/tslint-config": "1.0.1",
     "@types/chai": "4.0.10",
     "@types/mocha": "2.2.45",

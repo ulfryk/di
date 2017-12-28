@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@samwise-tech/forbidden-patterns@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@samwise-tech/forbidden-patterns/-/forbidden-patterns-1.0.0.tgz#401e9b6aa2084eb5c504c13facab3e12781ed251"
+"@samwise-tech/forbidden-patterns@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@samwise-tech/forbidden-patterns/-/forbidden-patterns-1.0.1.tgz#68ba9d3f949a91feeabd53aa4fd2f74f988eeac0"
   dependencies:
     chalk "2.3.0"
     glob "7.1.2"
