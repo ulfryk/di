@@ -4,8 +4,8 @@ import { Definition, FactoryFn, Injector, Label, Token, Type } from '../injector
 export default class TestInjector extends Injector {
 
   constructor(
-    protected name: string,
-    private source: Injector,
+    protected readonly name: string,
+    private readonly source: Injector,
   ) {
     super();
   }
