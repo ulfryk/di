@@ -68,4 +68,12 @@ describe('bind', () => {
     expect(c.b).to.be.instanceof(ClassB);
   });
 
+  it('bind Type to factory', () => {
+    bind(ClassB).toSelf();
+    bind(ClassA).toFactory(BClass => ({ _xx: BClass } as any), ClassB);
+    const a = getInjector().get(ClassA);
+    expect(a).to.not.be.instanceof(ClassA);
+    expect(a._xx).to.be.instanceOf(ClassB);
+  });
+
 });

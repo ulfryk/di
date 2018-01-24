@@ -1,5 +1,5 @@
 import { CircularDependencyError, RegistrationError } from '../errors';
-import { Definition, FactoryFn, Injector, Label, Token, Type } from '../injector';
+import { Definition, FactoryFn, Injector, Token, Type } from '../injector';
 
 export default class TestInjector extends Injector {
 
@@ -32,7 +32,7 @@ export default class TestInjector extends Injector {
     };
   }
 
-  public registerFactory<T>(token: Label, factory: FactoryFn<T>, ...dependencies: Token[]): void {
+  public registerFactory<T>(token: Token, factory: FactoryFn<T>, ...dependencies: Token[]): void {
     this.factories.set(token, { dependencies, factory, token });
   }
 
