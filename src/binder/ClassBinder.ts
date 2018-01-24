@@ -1,4 +1,4 @@
-import { Injector, Token, Type } from '../injector';
+import { FactoryFn, Injector, Token, Type } from '../injector';
 import { extractDependenciesMetadata } from '../metadata';
 
 export default class ClassBinder<T extends object> {
@@ -22,6 +22,10 @@ export default class ClassBinder<T extends object> {
 
   public toInstance(value: T) {
     this.getInjector().registerValue(this.type, value);
+  }
+
+  public toFactory(factory: FactoryFn<T>, ...dependencies: Token[]) {
+    this.getInjector().registerFactory(this.type, factory, ...dependencies);
   }
 
 }

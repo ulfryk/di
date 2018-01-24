@@ -2,7 +2,6 @@ import { CircularDependencyError, RegistrationError } from '../errors';
 
 import Definition from './Definition';
 import FactoryFn from './FactoryFn';
-import Label from './Label';
 import Token from './Token';
 import Type from './Type';
 
@@ -49,7 +48,7 @@ class Injector {
     };
   }
 
-  public registerFactory<T>(token: Label, factory: FactoryFn<T>, ...dependencies: Token[]): void {
+  public registerFactory<T>(token: Token, factory: FactoryFn<T>, ...dependencies: Token[]): void {
     if (this.factories.has(token)) {
       throw RegistrationError.of(this.getName(token), 'Factory');
     }
