@@ -5,13 +5,14 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./lib && node_modules/.bin/tsc --project tsconfig.publish.json",
-    "karma": "node_modules/.bin/karma start config/karma.conf.js",
-    "lint": "node_modules/.bin/tslint --project tsconfig.tslint.json --format verbose './src/**/*.{ts,tsx}'",
-    "mocha": "node_modules/.bin/mocha --opts ./mocha.opts './src/**/*.spec.ts'",
+    "build": "rm -rf ./lib && tsc --project tsconfig.publish.json",
+    "karma": "karma start config/karma.conf.js",
+    "lint": "tslint --project tsconfig.tslint.json --format verbose './src/**/*.ts'",
+    "mocha": "mocha --opts ./mocha.opts './src/**/*.spec.ts'",
+    "mocha:tdd": "yarn mocha --watch --reporter min",
     "prepublish": "yarn build",
     "test": "yarn outdated && yarn lint && yarn test-specs-for-only && yarn mocha && yarn karma",
-    "test-specs-for-only": "node_modules/.bin/forbidden 'src/**/*.spec.ts' -p describe.only it.only"
+    "test-specs-for-only": "forbidden 'src/**/*.spec.ts' -p describe.only it.only"
   },
   "repository": {
     "type": "git",
@@ -23,14 +24,14 @@
     "typescript",
     "dependency injection"
   ],
-  "author": "Samwise Technology, Inc. <icunningham@samwise.tech>",
+  "author": "Technology Concepts & Design, Inc.",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/samwise-tech/di/issues"
   },
   "homepage": "https://github.com/samwise-tech/di#readme",
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "devDependencies": {
     "@samwise-tech/forbidden-patterns": "1.0.2",
