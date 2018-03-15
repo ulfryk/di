@@ -18,14 +18,14 @@ class Injector {
 
   public register(definition: Definition): void {
     if (this.factories.has(definition.token)) {
-      throw RegistrationError.of(this.getName(definition.token));
+      throw RegistrationError.alreadyRegistered(this.getName(definition.token));
     }
     this.factories.set(definition.token, definition);
   }
 
   public registerClass<T>(token: Type<T>, ...dependencies: Token[]): void {
     if (this.factories.has(token)) {
-      throw RegistrationError.of(this.getName(token), 'Class');
+      throw RegistrationError.alreadyRegistered(this.getName(token), 'Class');
     }
     this.factories.set(token, new Definition(
       dependencies,
@@ -37,7 +37,7 @@ class Injector {
   public registerBoundClass<T extends object, C extends T>(token: Token<T>, Class: Type<C>) {
     return (...dependencies: Token[]): void => {
       if (this.factories.has(token)) {
-        throw RegistrationError.of(
+        throw RegistrationError.alreadyRegistered(
           `${this.getName(Class)} as ${this.getName(token)}`, `Class ${this.getName(token)}`);
       }
       this.factories.set(token, new Definition(
@@ -50,14 +50,14 @@ class Injector {
 
   public registerFactory<T>(token: Token, factory: FactoryFn<T>, ...dependencies: Token[]): void {
     if (this.factories.has(token)) {
-      throw RegistrationError.of(this.getName(token), 'Factory');
+      throw RegistrationError.alreadyRegistered(this.getName(token), 'Factory');
     }
     this.factories.set(token, new Definition(dependencies, factory, token));
   }
 
   public registerValue(token: Token, value: any): void {
     if (this.factories.has(token)) {
-      throw RegistrationError.of(this.getName(token), 'Value');
+      throw RegistrationError.alreadyRegistered(this.getName(token), 'Value');
     }
     this.factories.set(token, new Definition([], () => value, token));
   }

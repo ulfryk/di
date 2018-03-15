@@ -7,9 +7,9 @@ const extractMetadata = (target: Type): Token[] => {
   const constructorParams: Token[] | undefined = Reflect.getMetadata(METADATA.PARAM_TYPE, target);
   const dependenciesMetadata: Token[] | undefined =
     Reflect.getMetadata(METADATA.DEPENDENCIES, target);
-  return dependenciesMetadata !== undefined ? dependenciesMetadata :
-    constructorParams !== undefined ? constructorParams :
-      [];
+  return dependenciesMetadata !== undefined ?
+    dependenciesMetadata :
+    constructorParams !== undefined ? constructorParams : [];
 };
 
 export default extractMetadata;

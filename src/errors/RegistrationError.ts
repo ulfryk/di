@@ -1,6 +1,6 @@
 export class RegistrationError extends Error {
 
-  public static of(desc: string, type = 'It') {
+  public static alreadyRegistered(desc: string, type = 'It') {
     return new RegistrationError(`Cannot register ${desc}. ${type} is already registered.`);
   }
 
