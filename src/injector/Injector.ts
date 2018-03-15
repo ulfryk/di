@@ -5,7 +5,7 @@ import FactoryFn from './FactoryFn';
 import Token from './Token';
 import Type from './Type';
 
-class Injector {
+export default class Injector {
 
   protected readonly name: string = 'Injector';
 
@@ -97,5 +97,3 @@ class Injector {
   }
 
 }
-
-export default Injector;

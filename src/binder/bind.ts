@@ -1,18 +1,20 @@
-import { Definition, getInjector, Label, Token, Type } from '../injector';
+import { AbstractType, Definition, getInjector, Label, Token, Type } from '../injector';
 
+import IAbstractClassBinder from './AbstractClassBinder';
 import ClassBinder from './ClassBinder';
 import TokenBinder from './TokenBinder';
 
 export interface IBinder {
-  <T>(token: Label): TokenBinder<T>; // tslint:disable-line:readonly-interface
-  <T extends object>(token: Type<T>): ClassBinder<T>; // tslint:disable-line:readonly-interface
-  <T>(definition: Definition<T>): void; // tslint:disable-line:readonly-interface
+  <T>(token: Label): TokenBinder<T>;
+  <T extends object>(token: Type<T>): ClassBinder<T>;
+  <T extends object>(token: AbstractType<T>): IAbstractClassBinder<T>;
+  <T>(definition: Definition<T>): void;
 }
 
-const isType = (token: Token | Definition): token is Type =>
+const isType = (token: AbstractType | Token | Definition): token is Type =>
   token instanceof Function && Boolean(token.name);
 
-const isLabel = (token: Token | Definition): token is Label =>
+const isLabel = (token: AbstractType | Token | Definition): token is Label =>
   token.constructor as any === Symbol || String(token) === token;
 
 const isDefinition = (token: Token | Definition): token is Definition =>

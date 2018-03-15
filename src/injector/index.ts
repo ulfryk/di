@@ -1,3 +1,4 @@
+import AbstractType from './AbstractType';
 import Definition from './Definition';
 import FactoryFn from './FactoryFn';
 import getInjector from './getInjector';
@@ -8,6 +9,7 @@ import Token from './Token';
 import Type from './Type';
 
 export {
+  AbstractType,
   Definition,
   FactoryFn,
   getInjector,
