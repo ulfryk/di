@@ -1,23 +1,22 @@
 import { FactoryFn, Injector, Token, Type } from '../injector';
 import { extractDependenciesMetadata } from '../metadata';
 
-export default class ClassBinder<T extends object> {
+import IAbstractClassBinder from './AbstractClassBinder';
 
-  private readonly dependencies: Token[];
+export default class ClassBinder<T extends object> implements IAbstractClassBinder<T> {
 
   constructor(
     private readonly type: Type<T>,
     private readonly getInjector: () => Injector,
-  ) {
-    this.dependencies = extractDependenciesMetadata(type);
-  }
+  ) {}
 
   public toSelf() {
-    this.getInjector().registerClass(this.type, ...this.dependencies);
+    this.getInjector().registerClass(this.type, ...extractDependenciesMetadata(this.type));
   }
 
   public to(implementation: Type<T>) {
-    this.getInjector().registerBoundClass(this.type, implementation)(...this.dependencies);
+    this.getInjector().registerBoundClass(this.type, implementation)(
+      ...extractDependenciesMetadata(implementation));
   }
 
   public toInstance(value: T) {
