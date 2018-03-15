@@ -13,17 +13,19 @@ let ClassA: Type;
 let ClassB: Type;
 let ClassC: Type<{ readonly a: any; readonly b: any }>;
 
+abstract class AA {}
+
 describe('bind', () => {
 
   beforeEach(() => {
 
     @Injectable()
-    class A {}
+    class A extends AA {}
 
     ClassA = A;
 
     @Injectable()
-    class B {}
+    class B extends AA {}
 
     ClassB = B;
 
@@ -66,6 +68,22 @@ describe('bind', () => {
     expect(c).to.be.instanceof(ClassC);
     expect(c.a).to.be.instanceof(ClassA);
     expect(c.b).to.be.instanceof(ClassB);
+  });
+
+  it('should provide instance bound to abstract class (class A)', () => {
+    bind(AA).to(ClassA);
+    const a = getInjector().get(AA);
+    expect(a).to.be.instanceof(ClassA);
+    expect(a).to.not.be.instanceof(ClassB);
+    expect(a).to.be.instanceof(AA);
+  });
+
+  it('should provide instance bound to abstract class (class B)', () => {
+    bind(AA).to(ClassB);
+    const b = getInjector().get(AA);
+    expect(b).to.be.instanceof(ClassB);
+    expect(b).to.not.be.instanceof(ClassA);
+    expect(b).to.be.instanceof(AA);
   });
 
   it('bind Type to factory', () => {
