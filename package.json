@@ -1,6 +1,6 @@
 {
   "name": "@samwise-tech/di",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A Simple DI library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -31,7 +31,9 @@
   },
   "homepage": "https://github.com/samwise-tech/di#readme",
   "engines": {
-    "node": ">=8"
+    "node": ">=8",
+    "npm": ">=5",
+    "yarn": ">=1"
   },
   "devDependencies": {
     "@samwise-tech/forbidden-patterns": "1.0.5",
