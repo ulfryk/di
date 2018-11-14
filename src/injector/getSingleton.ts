@@ -18,6 +18,7 @@ export const GlobalObject: any = (() => {
 /** @private */
 export const getSingleton = (key: symbol): Injector => {
   if (GlobalObject[key] === undefined) {
+    // tslint:disable-next-line:no-object-mutation
     GlobalObject[key] = new Injector();
   }
   if (String(GlobalObject[key].constructor) === String(Injector)) {

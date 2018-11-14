@@ -11,7 +11,7 @@ export default class Injector {
 
   constructor(
     public factories = new Map<Token, Definition>(),
-    public instances = new Map<Token, any>(),
+    public instances = new Map<Token>(),
   ) {
     this.register(new Definition([], () => this, Injector));
   }
